@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Tripplist</title>
         <link rel="stylesheet" href="../styles/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Grandstander:ital,wght@0,400;1,300&family=Kufam:wght@900&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -16,45 +17,58 @@
         <main>
             
             <section class="planned-trips">
-                <div class="travel-card">
-                    <img class="destination-pic" src="../images/amsterdam.jpg" alt="picture of city">
-                    <div class="travel-details">
-                        <form>
-                            <div class="travel-locations">
-                                <label>From</label>
-                                <input id="starting-point" class="form-control" type="text" name="starting-point" placeholder="Traveling from ...">
-                                <label>To</label>
-                                <input id="destination" class="form-control" type="text" name="destination" placeholder="Traveling to ...">
+                <h2 class="section-title">Upcomming Trips</h2>
+                <div class="cards">
+                    <div class="travel-card">
+                        <img class="destination-pic" src="../images/amsterdam.jpg" alt="picture of city">
+                        <div class="travel-details">
+                            <form>
+                                <div class="type-of-trip">
+                                    <input type="radio" id="planned" name="trip-type" value="upcomming trip">
+                                    <label for="planned">Upcommig trip</label>
+                                    <input type="radio" id="wish" name="gender" value="wishlist">
+                                    <label for="wish">Wishlist</label>
+                                </div>
+                                <div class="travel-locations">
+                                    <label>From</label>
+                                    <input id="starting-point" class="form-control" type="text" name="starting-point" placeholder="Traveling from ...">
+                                    <label>To</label>
+                                    <input id="destination" class="form-control" type="text" name="destination" placeholder="Traveling to ...">
+                                </div>
+                                <div class="travel-times">
+                                    <label>From</label>
+                                    <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="Departure date ...">
+                                    <label>To</label>
+                                    <input id="end-date" class="form-control" type="text" name="end-date" placeholder="Up to ...">
+                                </div>
+                            </form>
+                            <p class="days-to-departure">Your trip to [City] starts in [Days]</p>
+                            <div class="typical-weather">
+                                <p>The typical weather during your travel period is</p>
+                                <p>Temparature - high [value] - low [value]</p>
+                                <p>[value]</p>
                             </div>
-                            <div class="travel-times">
-                                <label>From</label>
-                                <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="Departure date ...">
-                                <label>To</label>
-                                <input id="end-date" class="form-control" type="text" name="end-date" placeholder="Up to ...">
-                            </div>
-                        </form>
-                        <div class="days-to-departure"></div>
-                        <div class="typical-weather">
-                            <h3>The typical weather during your travel period is</h3>
-                            <h4>high [value] - low [value]</h4>
-                            <h4>cloudy [value]</h4>
+                            <button class="save-trip">SAVE TRIP</button>
+                            <button class="edit-trip-button">EDIT TRIP</button>
+                            <button class="remove-trip-button">REMOVE TRIP</button>
                         </div>
-                        <button class="remove-trip-button">REMOVE TRIP</button>
                     </div>
                 </div>
             </section>
 
             <section class="wish-list">
-                
+                <h2 class="section-title">Trips I would really like to go on</h2>
+                <div class="cards"></div>
             </section>
 
             <section class="trip-down-memory-lane">
-                
+                <h2 class="section-title">A trip down memory lane</h2>
+                <div class="cards"></div>
             </section>
         </main>
 
         <footer class="page-footer">
-            <p>This is a footer</p>
+            <p></p>
         </footer>
 
     </body>

@@ -1,5 +1,8 @@
+/* font-family: 'Grandstander', cursive;
+font-family: 'Kufam', cursive; */
+
 body {
-    background-color: peachpuff;
+    background-color: lightyellow;
     margin: 0px;
 }
 
@@ -9,9 +12,9 @@ body {
     grid-template-rows: 70px auto auto auto 100px;
     grid-template-areas:
       "header header header"
-      "side-bar planned-list side-bar"
-      "side-bar wish-list side-bar"
-      "side-bar expired-list side-bar"
+      "sidebar plannedlist sidebar"
+      "sidebar wishlist sidebar"
+      "sidebar expiredlist sidebar"
       "footer footer footer"
   }
 
@@ -36,25 +39,33 @@ body {
     margin: 10px;
 }
 
+.section-title {
+    color:darkorange;
+    font-family:'Anton', sans-serif;
+    align-self: start;   
+}
+
 .planned-trips {
-    grid-area: planned-list;
+    grid-area: plannedlist;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 20px
 }
 
 .travel-card {
-    grid-area: planned-list;
+    grid-area: plannedlist;
     display: flex;
     flex-direction: row;
     border: 3px solid orange;
     border-radius: 3px;
     background-color:papayawhip;
     width: 95%;
+    font-family: 'Grandstander', cursive;
 }
 
 .destination-pic {
-    grid-area: planned-list;
+    grid-area: plannedlist;
     width: 40%;
     object-fit: cover;
 }
@@ -63,17 +74,48 @@ body {
     margin: 10px;
 }
 
+.type-of-trip {
+    margin-bottom: 10px;
+}
+
+.travel-locations {
+    margin-bottom: 10px;
+}
+
+.travel-times{
+    margin-bottom: 10px;
+}
+
 .wish-list {
-    grid-area: wish-list;
+    grid-area: wishlist;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px
 }
 
 .trip-down-memory-lane {
-    grid-area: expired-list;
+    grid-area: expiredlist;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px
 }
 
 .page-footer {
     grid-area: footer;
     display: flex;
+    background-color: orange;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Grandstander', cursive;
+
 }
+
+.cards:empty::before {
+    content: "No trips yet";
+    font-family: 'Grandstander', cursive;
+    color:gray;
+
+  }
