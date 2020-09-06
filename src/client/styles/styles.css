@@ -1,5 +1,5 @@
 body {
-    background-color: bisque;
+    background-color: peachpuff;
     margin: 0px;
 }
 
@@ -27,6 +27,7 @@ body {
 .logo {
     grid-area: header;
     height: 50px;
+    margin: 5px;
 }
 
 .add-trip-button {
@@ -38,6 +39,28 @@ body {
 .planned-trips {
     grid-area: planned-list;
     display: flex;
+    justify-content: center;
+    margin: 20px
+}
+
+.travel-card {
+    grid-area: planned-list;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid orange;
+    border-radius: 3px;
+    background-color:papayawhip;
+    width: 95%;
+}
+
+.destination-pic {
+    grid-area: planned-list;
+    width: 40%;
+    object-fit: cover;
+}
+
+.travel-details {
+    margin: 10px;
 }
 
 .wish-list {
