@@ -1,0 +1,56 @@
+body {
+    background-color: bisque;
+    margin: 0px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 10px 1fr 10px;
+    grid-template-rows: 70px auto auto auto 100px;
+    grid-template-areas:
+      "header header header"
+      "side-bar planned-list side-bar"
+      "side-bar wish-list side-bar"
+      "side-bar expired-list side-bar"
+      "footer footer footer"
+  }
+
+.page-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: orange;
+}
+
+.logo {
+    grid-area: header;
+    height: 50px;
+}
+
+.add-trip-button {
+    grid-area: header;
+    width: 120px;
+    margin: 10px;
+}
+
+.planned-trips {
+    grid-area: planned-list;
+    display: flex;
+}
+
+.wish-list {
+    grid-area: wish-list;
+    display: flex;
+}
+
+.trip-down-memory-lane {
+    grid-area: expired-list;
+    display: flex;
+}
+
+.page-footer {
+    grid-area: footer;
+    display: flex;
+}
