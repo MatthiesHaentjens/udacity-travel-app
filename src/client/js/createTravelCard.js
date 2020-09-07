@@ -2,7 +2,7 @@ function typeOfTrip(value) {
 
 }
 
-function createCard(value) {
+export function createCard(value) {
 
     // create new DOM elements
     const cards = document.getElementsByClassName('cards')[0]; // to define which card based on user input function typeOfTrop
