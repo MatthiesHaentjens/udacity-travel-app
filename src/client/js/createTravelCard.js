@@ -1,12 +1,11 @@
-const typeOfTrip = function(value) {
+function typeOfTrip(value) {
 
 }
 
-
-const createCard = function(value) {
+function createCard(value) {
 
     // create new DOM elements
-    const cards = document.getElementsByClassName('cards')[0]; // to define which card based on user input
+    const cards = document.getElementsByClassName('cards')[0]; // to define which card based on user input function typeOfTrop
     const travelCard = document.createElement('div')
     const destinationPic = document.createElement('img')
     const travelDetails = document.createElement('div')
@@ -75,46 +74,15 @@ const createCard = function(value) {
     daysToDeparture.innerHTML = 'Your trip to [City] starts in [Days]' // to define the city and number of days based on destination and departure date
     typicalWeather.setAttribute('class', 'typical-weather')
     typicalWeather.innerHTML = 'The typical weather during your travel period is' // to define typical weather based on destination and travel times
+    saveButton.setAttribute('class', 'save-trip')
     saveButton.innerHTML = 'SAVE TRIP'
+    editButton.setAttribute('class', 'edit-trip-button')
     editButton.innerHTML = 'EDIT TRIP'
+    deleteButton.setAttribute('class', 'remove-trip-button')
+    deleteButton.onclick = function() {
+        this.closest('.travel-card').remove();
+    }
     deleteButton.innerHTML = 'REMOVE TRIP'
-
-    
 
 }
 
-
-                    // <div class="travel-card">
-                    //     <img class="destination-pic" src="../images/amsterdam.jpg" alt="picture of city">
-                    //     <div class="travel-details">
-                    //         <form>
-                    //             <div class="type-of-trip">
-                    //                 <input type="radio" id="planned" name="trip-type" value="upcomming trip">
-                    //                 <label for="planned">Upcommig trip</label>
-                    //                 <input type="radio" id="wish" name="gender" value="wishlist">
-                    //                 <label for="wish">Wishlist</label>
-                    //             </div>
-                    //             <div class="travel-locations">
-                    //                 <label>From</label>
-                    //                 <input id="starting-point" class="form-control" type="text" name="starting-point" placeholder="Traveling from ...">
-                    //                 <label>To</label>
-                    //                 <input id="destination" class="form-control" type="text" name="destination" placeholder="Traveling to ...">
-                    //             </div>
-                    //             <div class="travel-times">
-                    //                 <label>From</label>
-                    //                 <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="Departure date ...">
-                    //                 <label>To</label>
-                    //                 <input id="end-date" class="form-control" type="text" name="end-date" placeholder="Up to ...">
-                    //             </div>
-                    //         </form>
-                    //         <p class="days-to-departure">Your trip to [City] starts in [Days]</p>
-                    //         <div class="typical-weather">
-                    //             <p>The typical weather during your travel period is</p>
-                    //             <p>Temparature - high [value] - low [value]</p>
-                    //             <p>[value]</p>
-                    //         </div>
-                    //         <button class="save-trip">SAVE TRIP</button>
-                    //         <button class="edit-trip-button">EDIT TRIP</button>
-                    //         <button class="remove-trip-button">REMOVE TRIP</button>
-                    //     </div>
-                    // </div>
