@@ -11,12 +11,12 @@
 
         <header class="page-header">
             <img class="logo" src="../images/logo-tripplist.png" alt="logo tripplist">
-            <button class="add-trip-button">ADD TRIP</button>
+            <button class="add-trip-button" onclick="createCard()">ADD TRIP</button>
         </header>
 
         <main>
             
-            <section class="planned-trips">
+            <section id="planned-trips">
                 <h2 class="section-title">Upcomming Trips</h2>
                 <div class="cards">
                     <div class="travel-card">
@@ -56,12 +56,12 @@
                 </div>
             </section>
 
-            <section class="wish-list">
+            <section id="wish-list">
                 <h2 class="section-title">Trips I would really like to go on</h2>
                 <div class="cards"></div>
             </section>
 
-            <section class="trip-down-memory-lane">
+            <section id="trip-down-memory-lane">
                 <h2 class="section-title">A trip down memory lane</h2>
                 <div class="cards"></div>
             </section>
@@ -70,6 +70,7 @@
         <footer class="page-footer">
             <p></p>
         </footer>
-
+    
+    <script src="../js/createTravelCard.js" type="text/javascript"></script>
     </body>
 </html>

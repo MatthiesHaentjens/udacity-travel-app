@@ -45,27 +45,26 @@ body {
     align-self: start;   
 }
 
-.planned-trips {
+#planned-trips {
     grid-area: plannedlist;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px
+    margin: 20px;
 }
 
 .travel-card {
-    grid-area: plannedlist;
     display: flex;
     flex-direction: row;
     border: 3px solid orange;
     border-radius: 3px;
     background-color:papayawhip;
     width: 95%;
+    margin-bottom: 20px;
     font-family: 'Grandstander', cursive;
 }
 
 .destination-pic {
-    grid-area: plannedlist;
     width: 40%;
     object-fit: cover;
 }
@@ -86,7 +85,7 @@ body {
     margin-bottom: 10px;
 }
 
-.wish-list {
+#wish-list {
     grid-area: wishlist;
     display: flex;
     flex-direction: column;
@@ -94,7 +93,7 @@ body {
     margin: 20px
 }
 
-.trip-down-memory-lane {
+#trip-down-memory-lane {
     grid-area: expiredlist;
     display: flex;
     flex-direction: column;
