@@ -1,2 +1,9 @@
 import { createCard } from './js/createTravelCard.js'
-alert('i exit')
+
+import './styles/styles.css'
+
+import './images/logo-tripplist.png'
+
+export {
+    createCard
+}

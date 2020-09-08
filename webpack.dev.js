@@ -5,22 +5,34 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.css$/, // to change when using scss /\.scss$/
+                use: [ 'style-loader', 'css-loader' ] // to change when using scss , 'sass-loader'
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [ 'file-loader' ]
             }
         ]
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html",
+            template: './src/client/views/index.html',
+            filename: './index.html',
         }),
         new CleanWebpackPlugin({
             // Simulate the removal of files
