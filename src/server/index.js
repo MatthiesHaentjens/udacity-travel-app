@@ -1,4 +1,7 @@
-var path = require('path')
+
+// 
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Require Express to run server and routes
 const express = require('express');
@@ -34,3 +37,26 @@ function listening() {
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
+
+// Setup empty JS object to act as endpoint for all routes
+const projectData = [];
+
+// Initialize all route with a callback function
+// Callback function to complete GET '/all'
+app.get('/all', function (req, res) {
+  console.log('all', projectData)
+  res.send(projectData);
+})
+
+// Post Route, which receives the temperature, date and user response
+// and adds data to projectData
+app.post('/add', function (req, res) {
+    newEntry = {
+        date: req.body.date,
+        location: req.body.location,
+        temp: req.body.temp,
+        feelings: req.body.feelings
+    };
+    projectData.push(newEntry);
+    res.send(projectData);
+});

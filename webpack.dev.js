@@ -7,7 +7,8 @@ module.exports = {
     entry: './src/client/index.js',
     output: {
         libraryTarget: 'var',
-        library: 'Client'
+        library: 'Client',
+        path: path.resolve(__dirname, 'dist')
     },
     mode: 'development',
     devtool: 'source-map',
@@ -20,8 +21,8 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
-                test: /\.css$/, // to change when using scss /\.scss$/
-                use: [ 'style-loader', 'css-loader' ] // to change when using scss , 'sass-loader'
+                test: /\.scss$/, // to change when using scss /\.scss$/
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ] // to change when using scss , 'sass-loader'
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,

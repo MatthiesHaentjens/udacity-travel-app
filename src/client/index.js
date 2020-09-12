@@ -1,9 +1,13 @@
-import { createCard } from './js/createTravelCard.js'
+import { openAddTripPopup } from './js/createTravelCard.js';
+import { tripDetails } from './js/createTravelCard.js';
+import { createCard } from './js/createTravelCard.js';
 
-import './styles/styles.css'
+import './styles/styles.scss';
 
-import './images/logo-tripplist.png'
+import logo from './images/logo-tripplist.png';
 
 export {
+    openAddTripPopup,
+    tripDetails,
     createCard
 }

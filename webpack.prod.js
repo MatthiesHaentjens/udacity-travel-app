@@ -17,8 +17,8 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
-                test: /\.css$/, // to change when using scss /\.scss$/
-                use: [ 'style-loader', 'css-loader' ] // to change when using scss , 'sass-loader'
+                test: /\.scss$/, // to change when using scss /\.scss$/
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ] // to change when using scss , 'sass-loader'
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,

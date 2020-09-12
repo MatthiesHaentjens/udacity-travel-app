@@ -1,81 +1,74 @@
-function typeOfTrip(value) {
+export function openAddTripPopup(event) {
+
+    // Open the popup
+    document.getElementById("popup-form").style.display = "block";
 
 }
 
-export function createCard(value) {
+export function tripDetails(event) {
 
-    // create new DOM elements
-    const cards = document.getElementsByClassName('cards')[0]; // to define which card based on user input function typeOfTrop
+    // Get the form data
+    // const tripType = document.getElementById().value
+    // const startingPoint = document.getElementById('starting-point').value
+    // const destination = document.getElementById('destination').value
+    // const departureDate = document.getElementById('departure-date').value
+    // const endDate = document.getElementById('end-date').value
+
+    console.log('I work');
+
+    const tripType = 'planned-trips'
+    const startingPoint = 'Amsterdam';
+    const destination = 'Moscow';
+    const departureDate = '12-08-2020';
+    const endDate = '16-08-2020';
+    const daysToGo = 26
+
+    // Give form data to createCard
+    Client.createCard(tripType, daysToGo, startingPoint, destination, departureDate, endDate);
+
+    // Close the popup
+    // document.getElementById("popup-form").style.display = "block";
+}
+
+
+export function createCard(tripType, daysToGo, startingPoint, destination, departureDate, endDate) {
+
+    // Create new DOM elements
+    const cards = document.getElementById(tripType)
     const travelCard = document.createElement('div')
     const destinationPic = document.createElement('img')
     const travelDetails = document.createElement('div')
-    const form = document.createElement('form')
+    const daysToDeparture = document.createElement('div')
     const travelLocations = document.createElement('div')
-    const labelFrom1 = document.createElement('label')
-    const labelTo1 = document.createElement('label')
-    const inputStartingPoint = document.createElement('input')
-    const inputDestination = document.createElement('input')
     const travelTimes = document.createElement('div')
-    const labelFrom2 = document.createElement('label')
-    const labelTo2 = document.createElement('label')
-    const inputDepartureDate = document.createElement('input')
-    const inputEndDate = document.createElement('input')
-    const daysToDeparture = document.createElement('p')
     const typicalWeather = document.createElement('div')
-    const saveButton = document.createElement('button')
     const editButton = document.createElement('button')
     const deleteButton = document.createElement('button')
     
-    // append newly created elements into the DOM
+    // Append newly created elements into the DOM
     travelCard.appendChild(destinationPic)
     travelCard.appendChild(travelDetails)
-    travelDetails.appendChild(form)
-    form.appendChild(travelLocations)
-    travelLocations.appendChild(labelFrom1)
-    travelLocations.appendChild(inputStartingPoint)
-    travelLocations.appendChild(labelTo1)
-    travelLocations.appendChild(inputDestination)
-    form.appendChild(travelTimes)
-    travelTimes.appendChild(labelFrom2)
-    travelTimes.appendChild(inputDepartureDate)
-    travelTimes.appendChild(labelTo2)
-    travelTimes.appendChild(inputEndDate)
     travelDetails.appendChild(daysToDeparture)
+    travelDetails.appendChild(travelLocations)
+    travelDetails.appendChild(travelTimes)
     travelDetails.appendChild(typicalWeather)
-    travelDetails.appendChild(saveButton)
     travelDetails.appendChild(editButton)
     travelDetails.appendChild(deleteButton)
     cards.appendChild(travelCard)
 
-    // set content and attributes
+    // Set content and attributes
     travelCard.setAttribute('class', 'travel-card')
     destinationPic.setAttribute("src", "../images/rotterdam.jpg") // to define based on user input of destination
     destinationPic.setAttribute('class', 'destination-pic')
     travelDetails.setAttribute('class', 'travel-details')
-    travelLocations.setAttribute('class', 'travel-locations')
-    inputStartingPoint.setAttribute('placeholder', 'Traveling from ...')
-    inputStartingPoint.setAttribute('id', 'starting-point')
-    inputStartingPoint.setAttribute('class', 'form-control')
-    inputDestination.setAttribute('placeholder', 'Traveling to ...')
-    inputDestination.setAttribute('id', 'destination')
-    inputDestination.setAttribute('class', 'form-control')
-    labelFrom1.innerHTML = 'From'
-    labelTo1.innerHTML = ' To' 
-    travelTimes.setAttribute('class', 'travel-locations')
-    inputDepartureDate.setAttribute('placeholder', 'Departure date ...')
-    inputDepartureDate.setAttribute('id', 'departure-date')
-    inputDepartureDate.setAttribute('class', 'form-control')
-    inputEndDate.setAttribute('placeholder', 'Up to ...')
-    inputEndDate.setAttribute('id', 'end-date')
-    inputEndDate.setAttribute('class', 'form-control')
-    labelFrom2.innerHTML = 'From'
-    labelTo2.innerHTML = ' To'   
     daysToDeparture.setAttribute('class', 'days-to-departure')
-    daysToDeparture.innerHTML = 'Your trip to [City] starts in [Days]' // to define the city and number of days based on destination and departure date
+    daysToDeparture.innerHTML = 'Your trip to ' + destination + ' starts in ' + daysToGo + ' days';
+    travelLocations.setAttribute('class', 'travel-locations')
+    travelLocations.innerHTML = 'Traveling from ' + startingPoint + ' to ' + destination;
+    travelTimes.setAttribute('class', 'travel-locations')  
+    travelTimes.innerHTML = 'Departing on ' + departureDate + ' and coming back on ' + endDate;
     typicalWeather.setAttribute('class', 'typical-weather')
     typicalWeather.innerHTML = 'The typical weather during your travel period is' // to define typical weather based on destination and travel times
-    saveButton.setAttribute('class', 'save-trip')
-    saveButton.innerHTML = 'SAVE TRIP'
     editButton.setAttribute('class', 'edit-trip-button')
     editButton.innerHTML = 'EDIT TRIP'
     deleteButton.setAttribute('class', 'remove-trip-button')

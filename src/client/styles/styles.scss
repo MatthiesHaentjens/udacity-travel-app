@@ -31,6 +31,7 @@ body {
     grid-area: header;
     height: 50px;
     margin: 5px;
+    background-image: url('../images/logo-tripplist.png');
 }
 
 .add-trip-button {
@@ -39,13 +40,17 @@ body {
     margin: 10px;
 }
 
+.add-trip-popup {
+    display: none;
+}
+
 .section-title {
     color:darkorange;
     font-family:'Anton', sans-serif;
     align-self: start;   
 }
 
-#planned-trips {
+.planned-trips {
     grid-area: plannedlist;
     display: flex;
     flex-direction: column;
@@ -84,7 +89,7 @@ body {
     margin-bottom: 10px;
 }
 
-#wish-list {
+.wish-list {
     grid-area: wishlist;
     display: flex;
     flex-direction: column;
@@ -92,7 +97,7 @@ body {
     margin: 20px
 }
 
-#trip-down-memory-lane {
+.trip-down-memory-lane {
     grid-area: expiredlist;
     display: flex;
     flex-direction: column;
