@@ -52,10 +52,7 @@ app.get('/all', function (req, res) {
 // and adds data to projectData
 app.post('/add', function (req, res) {
     newEntry = {
-        date: req.body.date,
-        location: req.body.location,
         temp: req.body.temp,
-        feelings: req.body.feelings
     };
     projectData.push(newEntry);
     res.send(projectData);

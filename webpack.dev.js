@@ -18,7 +18,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: "babel-loader",
+                options: {
+                    plugins: ['@babel/plugin-transform-runtime'],
+                }
             },
             {
                 test: /\.scss$/, // to change when using scss /\.scss$/

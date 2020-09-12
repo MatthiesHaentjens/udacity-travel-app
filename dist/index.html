@@ -10,7 +10,8 @@
 
         <header class="page-header">
             <img class="logo" src={logo} alt="logo tripplist">
-            <button class="add-trip-button" onclick="return Client.openAddTripPopup(event)">ADD TRIP</button>
+            <button class="add-trip-button" id="add-trip-button" onclick="return Client.tripDetails(event)">ADD TRIP</button>
+            <button id="get-weather">GET WEATHER</button>
         </header>
 
         <main>
@@ -38,24 +39,25 @@
                             <label>To</label>
                             <input id="end-date" class="form-control" type="text" name="end-date" placeholder="Up to ...">
                         </div>
-                        <button class="save-trip" onclick="Client.tripDetails(event)">SAVE TRIP</button>
+                        <button class="save-trip" onclick="return Client.createCard(event)">SAVE TRIP</button>
                     </form>
                 </div>
             </div>
 
-            <section id="planned-trips">
+            <section class="planned-trips">
                 <h2 class="section-title">Upcomming Trips</h2>
-                <div class="cards"></div>
+                <div class="cards" id="planned-trips"></div>
             </section>
 
-            <section id="wish-list">
+            <section class="wish-list">
                 <h2 class="section-title">Trips I would really like to go on</h2>
-                <div class="cards"></div>
+                <div class="cards" id="wish-list"></div>
             </section>
 
-            <section id="trip-down-memory-lane">
+            <section class="trip-down-memory-lane">
                 <h2 class="section-title">A trip down memory lane</h2>
-                <div class="cards"></div>
+                <div class="cards" id="trip-down-memory-lane"></div>
+                <p id="temp"></p>
             </section>
         </main>
 

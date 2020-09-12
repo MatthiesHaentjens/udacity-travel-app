@@ -10,7 +10,8 @@
 
         <header class="page-header">
             <img class="logo" src={logo} alt="logo tripplist">
-            <button class="add-trip-button" onclick="return Client.tripDetails(event)">ADD TRIP</button>
+            <button class="add-trip-button" id="add-trip-button" onclick="return Client.tripDetails(event)">ADD TRIP</button>
+            <button id="get-weather">GET WEATHER</button>
         </header>
 
         <main>
@@ -56,6 +57,7 @@
             <section class="trip-down-memory-lane">
                 <h2 class="section-title">A trip down memory lane</h2>
                 <div class="cards" id="trip-down-memory-lane"></div>
+                <p id="temp"></p>
             </section>
         </main>
 
