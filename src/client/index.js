@@ -3,6 +3,8 @@ import { tripDetails } from './js/createTravelCard.js';
 import { createCard } from './js/createTravelCard.js';
 import { performAction } from './js/getLocalWeather.js';
 import { getCoordinates } from './js/getLocalWeather.js';
+import { getWeatherForecast } from './js/getLocalWeather.js';
+import { getHistoricalWeather } from './js/getLocalWeather.js';
 import { postData } from './js/getLocalWeather.js';
 import { updateUI } from './js/getLocalWeather.js';
 
@@ -16,6 +18,8 @@ export {
     createCard,
     performAction,
     getCoordinates,
+    getWeatherForecast,
+    getHistoricalWeather,
     postData,
     updateUI
 }

@@ -1,8 +1,13 @@
 /* Global Variables */
 
 // Personal API Key for Geonames API
-const baseURL = 'http://api.geonames.org/searchJSON?q=';
-const apiKeyGeoNames = 'matthies'
+const baseURLGeonames = 'http://api.geonames.org/searchJSON?q=';
+const apiKeyGeoNames = 'matthies';
+
+// Personal API Key for Weatherbit
+const baseURLWeatherbitHistory = 'http://api.weatherbit.io/v2.0/history/daily?';
+const baseURLWeatherbitForecast = 'http://api.weatherbit.io/v2.0/forecast/daily?';
+const apiKeyWeatherbit = '88034f45d76e48dd9032d139b923cb75';
 
 
 // Event listener to add function to existing HTML DOM element
@@ -12,16 +17,23 @@ document.getElementById('get-weather').addEventListener('click', performAction);
 export async function performAction(e) {
     const city = 'Amsterdam'
     const country = 'NL'
-    const data = await Client.getCoordinates(baseURL, city, country, apiKeyGeoNames);
+    const data = await Client.getCoordinates(city, country);
     console.log(data)
-    await Client.postData('/add', {lat:data.geonames[0].lat});
-    await Client.updateUI();
+    const lat = data.geonames[0].lat
+    const lng = data.geonames[0].lng
+    const forecastWeatherData = await Client.getWeatherForecast(lat, lng);
+    console.log(forecastWeatherData)
+    const startDate = '2020-01-01'
+    const endDate = '2020-01-02'
+    const historicalWeatherData = await Client.getHistoricalWeather(lat, lng, startDate, endDate);
+    console.log(historicalWeatherData)
+    // await Client.postData('/add', {lat:data.geonames[0].lat});
+    // await Client.updateUI();
 }
 
-/* Function to GET Web API Data*/
-export const getCoordinates = async (baseURL, city, country, apiKeyGeoNames)=>{
-    const res = await fetch(baseURL+city+'&country='+country+'&maxRows=1'+'&username='+apiKeyGeoNames);
-    console.log(res)
+/* Function to GET Geonames API Data*/
+export const getCoordinates = async (city, country)=>{
+    const res = await fetch(baseURLGeonames+city+'&country='+country+'&maxRows=1'+'&username='+apiKeyGeoNames);
     try {
       const data = await res.json();
       return data;
@@ -29,8 +41,32 @@ export const getCoordinates = async (baseURL, city, country, apiKeyGeoNames)=>{
     catch(error) {
       console.log("error", error);
     }
-    console.log(data);
 }
+
+/* Function to GET Weatherbit API Data*/
+export const getWeatherForecast = async (lat, lng) => {
+    const res = await fetch(baseURLWeatherbitForecast + '&lat=' + lat + '&lon=' + lng + '&key=' + apiKeyWeatherbit);
+    try {
+        const data = await res.json();
+        return data;
+      }
+      catch(error) {
+        console.log("error", error);
+      }
+}
+
+export const getHistoricalWeather = async (lat, lng, startDate, endDate) => {
+    const res = await fetch(baseURLWeatherbitHistory + '&lat=' + lat + '&lon=' + lng + '&start_date=' + startDate + '&end_date=' + endDate + '&key=' + apiKeyWeatherbit);
+    console.log(res)
+    try {
+        const data = await res.json();
+        return data;
+      }
+      catch(error) {
+        console.log("error", error);
+      }
+}
+
 
 /* Function to POST data */
 export const postData = async ( url = '', data = {})=>{
@@ -64,23 +100,3 @@ export const updateUI = async () => {
     console.log("error", error);
   }
 }
-
-// Geonames response
-// {"totalResultsCount":883,"geonames":
-//     [{"adminCode1":"07",
-//     "lng":"4.88969",
-//     "geonameId":2759794,
-//     "toponymName":"Amsterdam",
-//     "countryId":"2750405",
-//     "fcl":"P",
-//     "population":741636,
-//     "countryCode":"NL",
-//     "name":"Amsterdam",
-//     "fclName":"city, village,...",
-//     "adminCodes1":{"ISO3166_2":"NH"},
-//     "countryName":"Netherlands",
-//     "fcodeName":"capital of a political entity",
-//     "adminName1":"North Holland",
-//     "lat":"52.37403",
-//     "fcode":"PPLC"}]
-// }
