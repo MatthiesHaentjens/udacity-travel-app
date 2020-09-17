@@ -2,7 +2,7 @@ import { openAddTripPopup } from './js/createTravelCard.js';
 import { tripDetails } from './js/createTravelCard.js';
 import { createCard } from './js/createTravelCard.js';
 import { performAction } from './js/getLocalWeather.js';
-import { getWheather } from './js/getLocalWeather.js';
+import { getCoordinates } from './js/getLocalWeather.js';
 import { postData } from './js/getLocalWeather.js';
 import { updateUI } from './js/getLocalWeather.js';
 
@@ -15,7 +15,7 @@ export {
     tripDetails,
     createCard,
     performAction,
-    getWheather,
+    getCoordinates,
     postData,
     updateUI
 }

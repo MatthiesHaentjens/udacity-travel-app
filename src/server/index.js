@@ -24,6 +24,15 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static('dist'));
 
+// Geonames api
+const Geonames = require('geonames.js')
+
+const geonames = new Geonames({
+  username: process.env.myusername,
+  lan: 'en',
+  encoding: 'JSON'
+});
+
 // Setup Server
 const port = 8000;
 const server = app.listen(port, listening);
@@ -52,7 +61,7 @@ app.get('/all', function (req, res) {
 // and adds data to projectData
 app.post('/add', function (req, res) {
     newEntry = {
-        temp: req.body.temp,
+        lat: req.body.lat,
     };
     projectData.push(newEntry);
     res.send(projectData);

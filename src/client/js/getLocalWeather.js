@@ -1,9 +1,8 @@
 /* Global Variables */
 
-// Personal API Key for OpenWeatherMap API
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
-const OpenWeatherApiKey = '&appid=1259969657dfbfc713f6f6cb7caa2d64'
-// const apiKey = '&appid=1259969657dfbfc713f6f6cb7caa2d64/&units=imperial';
+// Personal API Key for Geonames API
+const baseURL = 'http://api.geonames.org/searchJSON?q=';
+const apiKeyGeoNames = 'matthies'
 
 
 // Event listener to add function to existing HTML DOM element
@@ -11,18 +10,17 @@ document.getElementById('get-weather').addEventListener('click', performAction);
 
 /* Function called by event listener */
 export async function performAction(e) {
-    const city = 'London'
-    const country = 'UK'
-    // const startDate = 1369728000
-    // const endDate = 1369789200
-    const data = await Client.getWheather(baseURL, city, country, OpenWeatherApiKey);
-    await Client.postData('/add', {temp:data.main.temp});
+    const city = 'Amsterdam'
+    const country = 'NL'
+    const data = await Client.getCoordinates(baseURL, city, country, apiKeyGeoNames);
+    console.log(data)
+    await Client.postData('/add', {lat:data.geonames[0].lat});
     await Client.updateUI();
 }
 
 /* Function to GET Web API Data*/
-export const getWheather = async (baseURL, city, country, OpenWeatherApiKey)=>{
-    const res = await fetch(baseURL+city+','+country+OpenWeatherApiKey);
+export const getCoordinates = async (baseURL, city, country, apiKeyGeoNames)=>{
+    const res = await fetch(baseURL+city+'&country='+country+'&maxRows=1'+'&username='+apiKeyGeoNames);
     console.log(res)
     try {
       const data = await res.json();
@@ -59,10 +57,30 @@ export const updateUI = async () => {
   const req = await fetch('/all');
   try{
     const allData = await req.json();
-    document.getElementById('temp').innerHTML = allData[allData.length - 1].temp;
+    document.getElementById('lat').innerHTML = allData[allData.length - 1].lat;
 
   }
   catch(error){
     console.log("error", error);
   }
 }
+
+// Geonames response
+// {"totalResultsCount":883,"geonames":
+//     [{"adminCode1":"07",
+//     "lng":"4.88969",
+//     "geonameId":2759794,
+//     "toponymName":"Amsterdam",
+//     "countryId":"2750405",
+//     "fcl":"P",
+//     "population":741636,
+//     "countryCode":"NL",
+//     "name":"Amsterdam",
+//     "fclName":"city, village,...",
+//     "adminCodes1":{"ISO3166_2":"NH"},
+//     "countryName":"Netherlands",
+//     "fcodeName":"capital of a political entity",
+//     "adminName1":"North Holland",
+//     "lat":"52.37403",
+//     "fcode":"PPLC"}]
+// }
