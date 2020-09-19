@@ -27,6 +27,8 @@ export async function performAction(e) {
     const endDate = '2020-01-02'
     const historicalWeatherData = await Client.getHistoricalWeather(lat, lng, startDate, endDate);
     console.log(historicalWeatherData)
+    const destinationPicture = await Client.getDestinationPicture(city)
+    console.log(destinationPicture)
     // await Client.postData('/add', {lat:data.geonames[0].lat});
     // await Client.updateUI();
 }
@@ -57,7 +59,6 @@ export const getWeatherForecast = async (lat, lng) => {
 
 export const getHistoricalWeather = async (lat, lng, startDate, endDate) => {
     const res = await fetch(baseURLWeatherbitHistory + '&lat=' + lat + '&lon=' + lng + '&start_date=' + startDate + '&end_date=' + endDate + '&key=' + apiKeyWeatherbit);
-    console.log(res)
     try {
         const data = await res.json();
         return data;
@@ -66,7 +67,6 @@ export const getHistoricalWeather = async (lat, lng, startDate, endDate) => {
         console.log("error", error);
       }
 }
-
 
 /* Function to POST data */
 export const postData = async ( url = '', data = {})=>{
