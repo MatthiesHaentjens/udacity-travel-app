@@ -25,13 +25,14 @@ app.use(cors());
 app.use(express.static('dist'));
 
 // Geonames api
-const Geonames = require('geonames.js')
+// Still need to figure out how this works instead of calling the urls and api key directly in the client js
+// const Geonames = require('geonames.js')
 
-const geonames = new Geonames({
-  username: process.env.myusername,
-  lan: 'en',
-  encoding: 'JSON'
-});
+// const geonames = new Geonames({
+//   username: process.env.myusername,
+//   lan: 'en',
+//   encoding: 'JSON'
+// });
 
 // Setup Server
 const port = 8000;
@@ -48,12 +49,11 @@ app.get('/', function (req, res) {
 })
 
 // Setup empty JS object to act as endpoint for all routes
-const projectData = [];
+const projectData = {};
 
 // Initialize all route with a callback function
 // Callback function to complete GET '/all'
-app.get('/all', function (req, res) {
-  console.log('all', projectData)
+app.get('/', function (req, res) {
   res.send(projectData);
 })
 
@@ -61,7 +61,14 @@ app.get('/all', function (req, res) {
 // and adds data to projectData
 app.post('/add', function (req, res) {
     newEntry = {
-        lat: req.body.lat,
+        tripType: req.body.tripType,
+        startingPoint: req.body.startingPoint,
+        destination: req.body.destination,
+        destinationPicture: req.body.destinationPicture,
+        departureDate: req.body.departureDate,
+        endDate: req.body.endDate,
+        minTemp: req.body.minTemp,
+        maxTemp: req.body.ma
     };
     projectData.push(newEntry);
     res.send(projectData);

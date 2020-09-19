@@ -10,21 +10,20 @@
 
         <header class="page-header">
             <img class="logo" src={logo} alt="logo tripplist">
-            <button class="add-trip-button" id="add-trip-button" onclick="return Client.getDestinationPicture(event)">ADD TRIP</button>
-            <button id="get-weather">GET WEATHER</button>
+            <button class="add-trip-button" id="add-trip-button" onclick="return Client.openAddTripPopup(event)">ADD TRIP</button>
         </header>
 
         <main>
             
             <div class="add-trip">
                 <div class="add-trip-popup" id="popup-form">
-                    <form>
+                    <form id="form">
                         <h2>Add a trip</h2>
                         <div class="type-of-trip">
                             <h3>What kind of trip would you like to add?</h3>
-                            <input type="checkbox" id="planned-trip" name="planned-trip" value="planned-trip">
+                            <input class="trip-checkbox" type="checkbox" name="planned-trips" value="planned-trips">
                             <label for="planned-trip">Upcomming Trip</label>
-                            <input type="checkbox" id="wish-list" name="wish-list" value="wish-list">
+                            <input class="trip-checkbox" type="checkbox" name="wish-list" value="wish-list">
                             <label for="wish-list">Trip for my Wish List</label>
                         </div>
                         <div class="travel-locations">
@@ -39,7 +38,7 @@
                             <label>To</label>
                             <input id="end-date" class="form-control" type="text" name="end-date" placeholder="Up to ...">
                         </div>
-                        <button class="save-trip" onclick="return Client.createCard(event)">SAVE TRIP</button>
+                        <button class="save-trip" onclick="return Client.getTripDetails(event)">SAVE TRIP</button>
                     </form>
                 </div>
             </div>
