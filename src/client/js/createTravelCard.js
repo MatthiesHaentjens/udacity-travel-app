@@ -39,13 +39,12 @@ export function getTripDetails(event) {
             })
             .then((data) => {
                 travelData['destinationPicture']= data['hits'][0]['webformatURL']
-                console.log(travelData)
-                createCard(travelData)
-                // return postData(travelData)
+                // console.log(travelData)
+                return postData('/add', travelData)
             })
-            // .then((data) => {
-            //     createCard(data)
-            // })
+            .then((data) => {
+                createCard(data)
+            })
 
     } 
     catch (error) {
@@ -78,7 +77,7 @@ export function getTripDetails(event) {
 // }
 
 /* Function to POST data */
-export const postData = async ( url = 'http://localhost:8080/add', data = {})=>{
+export const postData = async ( url = '', data = {})=>{
     const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
@@ -98,10 +97,16 @@ export const postData = async ( url = 'http://localhost:8080/add', data = {})=>{
   }
 
 
-export function createCard(travelData) {
+export const createCard = (data) => {
+
+    // const req = await fetch('/all');
+
+    // try {
+    //     const data = await req.json();
+    //     console.log(data)
 
     // Create new DOM elements
-    const cards = document.getElementById(travelData['tripType'])
+    const cards = document.getElementById(data.tripType)
     const travelCard = document.createElement('div')
     const destinationPic = document.createElement('img')
     const travelDetails = document.createElement('div')
@@ -123,6 +128,7 @@ export function createCard(travelData) {
     travelDetails.appendChild(deleteButton)
     cards.appendChild(travelCard)
 
+
     // Set content and attributes
     travelCard.setAttribute('class', 'travel-card')
     destinationPic.setAttribute("src", travelData['destinationPicture']) // to define based on user input of destination
@@ -143,6 +149,9 @@ export function createCard(travelData) {
         this.closest('.travel-card').remove();
     }
     deleteButton.innerHTML = 'REMOVE TRIP'
-
+    // }
+    // catch(error) {
+    //     console.log("error", error);
+    //   }
 }
 

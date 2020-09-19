@@ -49,11 +49,11 @@ app.get('/', function (req, res) {
 })
 
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+const projectData = [];
 
 // Initialize all route with a callback function
 // Callback function to complete GET '/all'
-app.get('/', function (req, res) {
+app.get('/all', function (req, res) {
   res.send(projectData);
 })
 
