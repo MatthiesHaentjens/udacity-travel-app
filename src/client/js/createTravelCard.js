@@ -1,7 +1,7 @@
 import { getCoordinates, getWeatherForecast } from "./getLocalWeather";
 import { getDestinationPicture } from "./getPicture";
 
-// Setup empty JS object to act as endpoint for all routes
+// Setup empty JS object to act as endpoint
 const travelData = {};
 
 export function openAddTripPopup(event) {
