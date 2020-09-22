@@ -8,17 +8,17 @@
 
     <body>
 
-        <header class="page-header">
-            <img class="logo" src={logo} alt="logo tripplist">
-            <button class="add-trip-button" id="add-trip-button" onclick="return Client.openAddTripPopup(event)">ADD TRIP</button>
-        </header>
-
-        <main>
+        <div class="container">
             
-            <div class="add-trip">
-                <div class="add-trip-popup" id="popup-form">
-                    <form id="form">
-                        <h2>Add a trip</h2>
+            <header class="page-header">
+                <img class="logo" src='src/client/images/logo-tripplist.png' alt="logo tripplist">
+                <button class="add-trip-button" id="add-trip-button" onclick="return Client.openAddTripPopup(event)">ADD TRIP</button>
+            </header>
+            
+            <div id="popup-form">
+                <div class="add-trip-popup">
+                    <p class="form-title">Add a trip</p>
+                    <form class="form" id="form">
                         <div class="type-of-trip">
                             <h3>What kind of trip would you like to add?</h3>
                             <input class="trip-checkbox" type="checkbox" name="planned-trips" value="planned-trips">
@@ -56,13 +56,12 @@
             <section class="trip-down-memory-lane">
                 <h2 class="section-title">A trip down memory lane</h2>
                 <div class="cards" id="trip-down-memory-lane"></div>
-                <p id="lat"></p>
             </section>
-        </main>
 
-        <footer class="page-footer">
-            <p></p>
-        </footer>
-    
+            <div class="page-footer">
+                <p></p>
+            </div>
+
+        </div>
     </body>
 </html>

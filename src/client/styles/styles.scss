@@ -1,6 +1,10 @@
 /* font-family: 'Grandstander', cursive;
 font-family: 'Kufam', cursive; */
 
+html,body{
+    height: 100%;
+  }
+
 body {
     background-color: lightyellow;
     margin: 0px;
@@ -8,19 +12,29 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 10px 1fr 10px;
-    grid-template-rows: 70px auto auto auto 100px;
+    grid-template-columns: 2.5% 1fr 2.5%;
+    grid-template-rows: 70px 1fr 1fr 1fr 100px;
     grid-template-areas:
       "header header header"
-      "sidebar plannedlist sidebar"
-      "sidebar wishlist sidebar"
-      "sidebar expiredlist sidebar"
-      "footer footer footer"
+      ". plannedlist ."
+      ". wishlist ."
+      ". expiredlist ."
+      "footer footer footer";
+    height: 100%;
   }
 
+.cards:empty::before {
+    content: "No trips yet";
+    font-family: 'Grandstander', cursive;
+    color:gray;
+
+}
+
 .page-header {
+    grid-area: header;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
@@ -30,18 +44,61 @@ body {
 .logo {
     grid-area: header;
     height: 50px;
-    margin: 5px;
-    background-image: url('../images/logo-tripplist.png');
+    margin-left: 10px;
 }
 
 .add-trip-button {
     grid-area: header;
-    width: 120px;
-    margin: 10px;
+    width: 160px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#popup-form {
+    display: none;
+    grid-area: plannedlist-start / plannedlist-start / expiredlist-end / expiredlist-end;
+    background-image: url('../images/palm-trees.jpg');
+    background-size: cover;
+    z-index: 1;
+    margin: 25px 0px 25px 0px;
 }
 
 .add-trip-popup {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background-color: lightyellow;
+    margin: 200px;
+    padding-bottom: 30px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+    background-color: lightseagreen;
+    font-size: 26px;
+}
+
+.save-trip {
+    width: 375px;
+    height: 40px;
+    margin-top:20px;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    border: solid 2px green;
 }
 
 .section-title {
@@ -54,7 +111,6 @@ body {
     grid-area: plannedlist;
     display: flex;
     flex-direction: column;
-    margin: 20px;
 }
 
 .travel-card {
@@ -93,32 +149,20 @@ body {
     grid-area: wishlist;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 20px
 }
 
 .trip-down-memory-lane {
     grid-area: expiredlist;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 20px
 }
 
 .page-footer {
     grid-area: footer;
     display: flex;
     background-color: orange;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     font-family: 'Grandstander', cursive;
 
 }
 
-.cards:empty::before {
-    content: "No trips yet";
-    font-family: 'Grandstander', cursive;
-    color:gray;
-
-  }
