@@ -35,7 +35,7 @@ app.use(express.static('dist'));
 // });
 
 // Setup Server
-const port = 8000;
+const port = 8080;
 const server = app.listen(port, listening);
 
 // Callback to debug
@@ -49,10 +49,8 @@ app.get('/', function (req, res) {
 })
 
 // Setup empty JS object to act as endpoint for all routes
-const projectData = [];
+const projectData = {};
 
-// Initialize all route with a callback function
-// Callback function to complete GET '/all'
 app.get('/all', function (req, res) {
   res.send(projectData);
 })
@@ -60,16 +58,36 @@ app.get('/all', function (req, res) {
 // Post Route, which receives the temperature, date and user response
 // and adds data to projectData
 app.post('/add', function (req, res) {
-    newEntry = {
-        tripType: req.body.tripType,
-        startingPoint: req.body.startingPoint,
-        destination: req.body.destination,
-        destinationPicture: req.body.destinationPicture,
-        departureDate: req.body.departureDate,
-        endDate: req.body.endDate,
-        minTemp: req.body.minTemp,
-        maxTemp: req.body.ma
-    };
-    projectData.push(newEntry);
+  console.log(req)
+    // newEntry = {
+    //     tripType: req.body.tripType,
+    //     startingPoint: req.body.startingPoint,
+    //     destination: req.body.destination,
+    //     destinationPicture: req.body.destinationPicture,
+    //     departureDate: req.body.departureDate,
+    //     endDate: req.body.endDate,
+    //     minTemp: req.body.minTemp,
+    //     maxTemp: req.body.maxTemp,
+    //     id: projectData.length === 0 ? 1 : projectData[projectData.length].id + 1 
+    // };
+    // projectData.push(newEntry);
+    
+    projectData['tripType'] = req.body.tripType,
+    projectData['startingPoint'] = req.body.startingPoint,
+    projectData['destination'] = req.body.destination,
+    projectData['destinationPicture'] = req.body.destinationPicture,
+    projectData['departureDate']= req.body.departureDate,
+    projectData['endDate'] = req.body.endDate,
+    projectData['minTemp'] = req.body.minTemp,
+    projectData['maxTemp'] = req.body.maxTemp,
+    // projectData['id'] = projectData.length === 0 ? 1 : projectData[projectData.length].id + 1
     res.send(projectData);
 });
+
+// app.post('/delete', function (req,res) {
+//   const id = req.body.id
+//   const record = projectData.find(id)
+//   projectData.filter(record)
+//   console.log(projectData)
+//   res.status(200)
+// })
