@@ -35,7 +35,7 @@ app.use(express.static('dist'));
 // });
 
 // Setup Server
-const port = 8080;
+const port = 8000;
 const server = app.listen(port, listening);
 
 // Callback to debug
@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
 })
 
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+const projectData = [];
 
 app.get('/all', function (req, res) {
   res.send(projectData);
@@ -59,35 +59,51 @@ app.get('/all', function (req, res) {
 // and adds data to projectData
 app.post('/add', function (req, res) {
   console.log(req)
-    // newEntry = {
-    //     tripType: req.body.tripType,
-    //     startingPoint: req.body.startingPoint,
-    //     destination: req.body.destination,
-    //     destinationPicture: req.body.destinationPicture,
-    //     departureDate: req.body.departureDate,
-    //     endDate: req.body.endDate,
-    //     minTemp: req.body.minTemp,
-    //     maxTemp: req.body.maxTemp,
-    //     id: projectData.length === 0 ? 1 : projectData[projectData.length].id + 1 
-    // };
-    // projectData.push(newEntry);
+    newEntry = {
+        tripType: req.body.tripType,
+        startingPoint: req.body.startingPoint,
+        destination: req.body.destination,
+        destinationPicture: req.body.destinationPicture,
+        departureDate: req.body.departureDate,
+        endDate: req.body.endDate,
+        minTemp: req.body.minTemp,
+        maxTemp: req.body.maxTemp,
+        id: projectData.length === 0 ? 1 : projectData[projectData.length - 1].id + 1 
+    };
+    projectData.push(newEntry);
     
-    projectData['tripType'] = req.body.tripType,
-    projectData['startingPoint'] = req.body.startingPoint,
-    projectData['destination'] = req.body.destination,
-    projectData['destinationPicture'] = req.body.destinationPicture,
-    projectData['departureDate']= req.body.departureDate,
-    projectData['endDate'] = req.body.endDate,
-    projectData['minTemp'] = req.body.minTemp,
-    projectData['maxTemp'] = req.body.maxTemp,
-    // projectData['id'] = projectData.length === 0 ? 1 : projectData[projectData.length].id + 1
+    // projectData['tripType'] = req.body.tripType,
+    // projectData['startingPoint'] = req.body.startingPoint,
+    // projectData['destination'] = req.body.destination,
+    // projectData['destinationPicture'] = req.body.destinationPicture,
+    // projectData['departureDate']= req.body.departureDate,
+    // projectData['endDate'] = req.body.endDate,
+    // projectData['minTemp'] = req.body.minTemp,
+    // projectData['maxTemp'] = req.body.maxTemp,
+    // // projectData['id'] = projectData.length === 0 ? 1 : projectData[projectData.length].id + 1
     res.send(projectData);
+    console.log(projectData)
+    
 });
 
-// app.post('/delete', function (req,res) {
-//   const id = req.body.id
-//   const record = projectData.find(id)
-//   projectData.filter(record)
-//   console.log(projectData)
-//   res.status(200)
-// })
+app.post('/delete', function (req,res) {
+  console.log(req)
+  const id = req.body.id
+  const record = projectData.find(id)
+  console.log(record)
+  projectData.filter(record)
+  console.log(projectData)
+  res.status(200)
+})
+
+// To do
+// Set webpack up to also run my server file
+// Set a days to go function
+// Set up my delete route
+// Set up a radio button instead of a checkbox
+// Set error messages
+// Style my travel card
+// Prepare a custom readme
+// Set API credentials in the .env file
+// Set up a function to move trips to memory lane
+// Clean up code

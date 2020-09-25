@@ -13,7 +13,7 @@ export function openAddTripPopup(event) {
 
 export function getTripDetails(event) {
 
-    //Prevent default page reload
+    // Prevent default page reload
     event.preventDefault(); 
 
     // Get the form data
@@ -22,8 +22,6 @@ export function getTripDetails(event) {
     travelData['destination'] = document.getElementById('destination').value
     travelData['departureDate'] = document.getElementById('departure-date').value
     travelData['endDate'] = document.getElementById('end-date').value
-    // travelData['minTemp', 'maxTemp'] =
-    // travelData['destinationPicture'] = Client.getDestinationPicture(travelData['destination'])
 
     try {
         getCoordinates(travelData['destination'])
@@ -107,9 +105,10 @@ export const createCard = async () => {
     try {
 
         const data = await req.json();
+        console.log(data)
 
         // Create new DOM elements
-        const cards = document.getElementById(data['tripType'])
+        const cards = document.getElementById(data[data.length - 1]['tripType'])
         const travelCard = document.createElement('div')
         const destinationPic = document.createElement('img')
         const travelDetails = document.createElement('div')
@@ -117,7 +116,6 @@ export const createCard = async () => {
         const travelLocations = document.createElement('div')
         const travelTimes = document.createElement('div')
         const typicalWeather = document.createElement('div')
-        const editButton = document.createElement('button')
         const deleteButton = document.createElement('button')
         
         // Append newly created elements into the DOM
@@ -133,21 +131,21 @@ export const createCard = async () => {
 
         // Set content and attributes
         travelCard.setAttribute('class', 'travel-card')
-        destinationPic.setAttribute("src", data['destinationPicture'])
+        destinationPic.setAttribute("src", data[data.length - 1]['destinationPicture'])
         destinationPic.setAttribute('class', 'destination-pic')
         travelDetails.setAttribute('class', 'travel-details')
         daysToDeparture.setAttribute('class', 'days-to-departure')
-        daysToDeparture.innerHTML = 'Your trip to ' + data['destination'] + ' starts in ' + '[data.daysToGo]' + ' days';
+        daysToDeparture.innerHTML = 'Your trip to ' + data[data.length - 1]['destination'] + ' starts in ' + '[data.daysToGo]' + ' days';
         travelLocations.setAttribute('class', 'travel-locations')
-        travelLocations.innerHTML = 'Traveling from ' + data['startingPoint'] + ' to ' + data['destination'];
+        travelLocations.innerHTML = 'Traveling from ' + data[data.length - 1]['startingPoint'] + ' to ' + data[data.length - 1]['destination'];
         travelTimes.setAttribute('class', 'travel-locations')  
-        travelTimes.innerHTML = 'Departing on ' + data['departureDate'] + ' and coming back on ' + data['endDate'];
+        travelTimes.innerHTML = 'Departing on ' + data[data.length - 1]['departureDate'] + ' and coming back on ' + data[data.length - 1]['endDate'];
         typicalWeather.setAttribute('class', 'typical-weather')
-        typicalWeather.innerHTML = 'On your arrival day the temparature is between ' + data['minTemp'] + ' - ' + data['maxTemp'];
+        typicalWeather.innerHTML = 'On your arrival day the temparature is between ' + data[data.length - 1]['minTemp'] + ' - ' + data[data.length - 1]['maxTemp'];
         deleteButton.setAttribute('class', 'remove-trip-button')
         // deleteButton.setAttribute('data-id', data['id'])
         deleteButton.onclick = function() {
-            // postData('/delete', {id:data.id})
+            postData('/delete', {id:data[data.length - 1]['id']})
             this.closest('.travel-card').remove();
         }
         deleteButton.innerHTML = 'REMOVE TRIP'

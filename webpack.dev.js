@@ -8,7 +8,7 @@ module.exports = {
     output: {
         libraryTarget: 'var',
         library: 'Client',
-        path: path.resolve(__dirname, 'dist')
+        // path: path.resolve(__dirname, 'dist')
     },
     mode: 'development',
     devtool: 'source-map',
@@ -24,8 +24,8 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/, // to change when using scss /\.scss$/
-                use: [ 'style-loader', 'css-loader', 'sass-loader' ] // to change when using scss , 'sass-loader'
+                test: /\.scss$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
