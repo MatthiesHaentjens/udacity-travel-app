@@ -86,16 +86,21 @@ app.post('/delete', function (req,res) {
 
 })
 
+module.exports = app;
+
 // To do
 // Set webpack up to also run my server file
-// Set a days to go function
+// Set a days to go function - check
 // Set up my delete route - check
 // Set up a radio button instead of a checkbox - Check
 // Set error messages
   // Date format
   // Destination
 // Style my travel card
+// Give hoover states to the buttons
+// Make page responsive
+// Prepare tests
+// Prepare offline service workers
 // Prepare a custom readme
-// Set API credentials in the .env file
 // Set up a function to move trips to memory lane
 // Clean up code

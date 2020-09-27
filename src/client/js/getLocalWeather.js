@@ -1,4 +1,5 @@
 /* Global Variables */
+const fetch = require("node-fetch");
 
 // Personal API Key for Geonames API
 const baseURLGeonames = 'http://api.geonames.org/searchJSON?q=';
@@ -16,7 +17,7 @@ const apiKeyWeatherbit = '88034f45d76e48dd9032d139b923cb75';
 // const apiKeyWeatherbit = process.env.API_KEY_WEATHERBIT
 
 /* Function to GET Geonames API Data*/
-export const getCoordinates = async (city) =>{
+export async function getCoordinates(city) {
     const res = await fetch(baseURLGeonames+city+'&maxRows=1'+'&username='+apiKeyGeoNames);
     try {
       const data = await res.json();
@@ -28,7 +29,7 @@ export const getCoordinates = async (city) =>{
 }
 
 /* Function to GET Weatherbit API Data*/
-export const getWeatherForecast = async (lat, lng) => {
+export async function getWeatherForecast(lat, lng) {
     const res = await fetch(baseURLWeatherbitForecast + '&lat=' + lat + '&lon=' + lng + '&key=' + apiKeyWeatherbit);
     try {
         const data = await res.json();
@@ -39,7 +40,7 @@ export const getWeatherForecast = async (lat, lng) => {
       }
 }
 
-export const getHistoricalWeather = async (lat, lng, startDate, endDate) => {
+export async function getHistoricalWeather(lat, lng, startDate, endDate) {
     const res = await fetch(baseURLWeatherbitHistory + '&lat=' + lat + '&lon=' + lng + '&start_date=' + startDate + '&end_date=' + endDate + '&key=' + apiKeyWeatherbit);
     try {
         const data = await res.json();
