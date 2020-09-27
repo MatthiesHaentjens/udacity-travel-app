@@ -1,7 +1,7 @@
 import { getCoordinates, getWeatherForecast } from "./getLocalWeather";
 import { getDestinationPicture } from "./getPicture";
 
-// Setup empty JS object to act as endpoint
+// Setup empty JS object to act as endpoint to collect all form and api data
 const travelData = {};
 
 export function openAddTripPopup(event) {
@@ -36,7 +36,13 @@ export function getTripDetails(event) {
                 return getDestinationPicture(travelData['destination'])
             })
             .then((data) => {
-                travelData['destinationPicture']= data['hits'][0]['webformatURL']
+                if (data['hits'].length > 0) {
+                    travelData['destinationPicture'] = data['hits'][0]['webformatURL']
+                }
+                else { 
+                    travelData['destinationPicture'] = '../images/palm-trees.jpg'
+                }
+
                 console.log(travelData)
                 console.log(travelData.tripType)
                 return postData('/add', 
@@ -106,6 +112,7 @@ export const createCard = async () => {
 
         const data = await req.json();
         console.log(data)
+        console.log(data[data.length - 1]['id'])
 
         // Create new DOM elements
         const cards = document.getElementById(data[data.length - 1]['tripType'])

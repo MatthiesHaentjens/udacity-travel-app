@@ -21,22 +21,24 @@
                     <form class="form" id="form">
                         <div class="type-of-trip">
                             <h3>What kind of trip would you like to add?</h3>
-                            <input class="trip-checkbox" type="checkbox" name="planned-trips" value="planned-trips">
+                            <input class="trip-checkbox" type="radio" name="trip-type" value="planned-trips" required>
                             <label for="planned-trip">Upcomming Trip</label>
-                            <input class="trip-checkbox" type="checkbox" name="wish-list" value="wish-list">
+                            <input class="trip-checkbox" type="radio" name="trip-type" value="wish-list" required>
                             <label for="wish-list">Trip for my Wish List</label>
                         </div>
                         <div class="travel-locations">
                             <label>From</label>
-                            <input id="starting-point" class="form-control" type="text" name="starting-point" placeholder="Traveling from ...">
+                            <input id="starting-point" class="form-control" type="text" name="starting-point" placeholder="Traveling from ..." required>
                             <label>To</label>
-                            <input id="destination" class="form-control" type="text" name="destination" placeholder="Traveling to ...">
+                            <input id="destination" class="form-control" type="text" name="destination" placeholder="Traveling to ..." required>
                         </div>
                         <div class="travel-times">
                             <label>From</label>
-                            <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="Departure date ...">
+                            <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="dd-mm-yyyy" 
+                            required pattern= "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
                             <label>To</label>
-                            <input id="end-date" class="form-control" type="text" name="end-date" placeholder="Up to ...">
+                            <input id="end-date" class="form-control" type="text" name="end-date" placeholder="dd-mm-yyyy" 
+                            required pattern= "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
                         </div>
                         <button class="save-trip" onclick="return Client.getTripDetails(event)">SAVE TRIP</button>
                     </form>

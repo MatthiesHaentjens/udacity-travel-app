@@ -8,10 +8,14 @@ module.exports = {
     output: {
         libraryTarget: 'var',
         library: 'Client',
-        // path: path.resolve(__dirname, 'dist')
     },
     mode: 'development',
     devtool: 'source-map',
+    devServer: {
+        contentBase:  path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000
+      },
     stats: 'verbose',
     module: {
         rules: [

@@ -90,6 +90,14 @@ body {
     font-size: 26px;
 }
 
+input:invalid {
+    box-shadow: 0 0 5px 1px red;
+  }
+  
+  input:focus:invalid {
+    box-shadow: none;
+  }
+
 .save-trip {
     width: 375px;
     height: 40px;
