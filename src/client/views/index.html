@@ -34,11 +34,11 @@
                         </div>
                         <div class="travel-times">
                             <label>From</label>
-                            <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="dd-mm-yyyy" 
-                            required pattern= "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
+                            <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="mm-dd-yyyy" 
+                            required pattern= "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$">
                             <label>To</label>
-                            <input id="end-date" class="form-control" type="text" name="end-date" placeholder="dd-mm-yyyy" 
-                            required pattern= "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
+                            <input id="end-date" class="form-control" type="text" name="end-date" placeholder="mm-dd-yyyy" 
+                            required pattern= "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$">
                         </div>
                         <button class="save-trip" onclick="return Client.getTripDetails(event)">SAVE TRIP</button>
                     </form>

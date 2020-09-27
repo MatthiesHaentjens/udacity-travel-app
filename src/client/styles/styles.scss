@@ -135,6 +135,7 @@ input:invalid {
 .destination-pic {
     width: 40%;
     object-fit: cover;
+    overflow: hidden;
 }
 
 .travel-details {

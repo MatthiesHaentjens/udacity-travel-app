@@ -1,5 +1,6 @@
 import { getCoordinates, getWeatherForecast } from "./getLocalWeather";
 import { getDestinationPicture } from "./getPicture";
+import { daysToGo } from "./daysToGo.js";
 
 // Setup empty JS object to act as endpoint to collect all form and api data
 const travelData = {};
@@ -23,6 +24,9 @@ export function getTripDetails(event) {
     travelData['departureDate'] = document.getElementById('departure-date').value
     travelData['endDate'] = document.getElementById('end-date').value
 
+    // Calculate days to go
+    travelData['daysToGo'] = Client.daysToGo(travelData['departureDate'])
+
     try {
         getCoordinates(travelData['destination'])
             .then((data) => {
@@ -43,14 +47,13 @@ export function getTripDetails(event) {
                     travelData['destinationPicture'] = '../images/palm-trees.jpg'
                 }
 
-                console.log(travelData)
-                console.log(travelData.tripType)
                 return postData('/add', 
                 {tripType:travelData.tripType,
                     startingPoint:travelData.startingPoint,
                     destination:travelData.destination,
                     destinationPicture:travelData.destinationPicture,
                     departureDate:travelData.departureDate,
+                    daysToGo:travelData.daysToGo,
                     endDate:travelData.endDate,
                     minTemp:travelData.minTemp,
                     maxTemp:travelData.maxTemp })
@@ -64,20 +67,6 @@ export function getTripDetails(event) {
         console.log('error', error);
     }
 
-    // const tripType = document.querySelector('.trip-checkbox:checked').value;
-    // const startingPoint = document.getElementById('starting-point').value;
-    // const destination = document.getElementById('destination').value;
-    // const departureDate = '12-08-2020';
-    // const endDate = '16-08-2020';
-    // const destinationPicture = Client.getDestinationPicture(travelData['destination'])
-    // const daysToGo = 26
-
-    // console.log(travelData)
-    // Give form data to createCard
-    // Client.createCard(travelData['tripType'], daysToGo, travelData['startingPoint'], travelData['destination'] , travelData['departureDate'], travelData['endDate'] , travelData['destinationPicture'])
-    // console.log(travelData)
-
-    // Close the popup
     document.getElementById("popup-form").style.display = "none";
     document.getElementById("form").reset();
     
@@ -112,7 +101,6 @@ export const createCard = async () => {
 
         const data = await req.json();
         console.log(data)
-        console.log(data[data.length - 1]['id'])
 
         // Create new DOM elements
         const cards = document.getElementById(data[data.length - 1]['tripType'])
@@ -142,7 +130,7 @@ export const createCard = async () => {
         destinationPic.setAttribute('class', 'destination-pic')
         travelDetails.setAttribute('class', 'travel-details')
         daysToDeparture.setAttribute('class', 'days-to-departure')
-        daysToDeparture.innerHTML = 'Your trip to ' + data[data.length - 1]['destination'] + ' starts in ' + '[data.daysToGo]' + ' days';
+        daysToDeparture.innerHTML = 'Your trip to ' + data[data.length - 1]['destination'] + ' starts in ' + data[data.length - 1]['daysToGo'] + ' days';
         travelLocations.setAttribute('class', 'travel-locations')
         travelLocations.innerHTML = 'Traveling from ' + data[data.length - 1]['startingPoint'] + ' to ' + data[data.length - 1]['destination'];
         travelTimes.setAttribute('class', 'travel-locations')  
@@ -150,7 +138,6 @@ export const createCard = async () => {
         typicalWeather.setAttribute('class', 'typical-weather')
         typicalWeather.innerHTML = 'On your arrival day the temparature is between ' + data[data.length - 1]['minTemp'] + ' - ' + data[data.length - 1]['maxTemp'];
         deleteButton.setAttribute('class', 'remove-trip-button')
-        // deleteButton.setAttribute('data-id', data['id'])
         deleteButton.onclick = function() {
             postData('/delete', {id:data[data.length - 1]['id']})
             this.closest('.travel-card').remove();
