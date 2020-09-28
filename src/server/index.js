@@ -24,16 +24,6 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static('dist'));
 
-// Geonames api
-// Still need to figure out how this works instead of calling the urls and api key directly in the client js
-// const Geonames = require('geonames.js')
-
-// const geonames = new Geonames({
-//   username: process.env.myusername,
-//   lan: 'en',
-//   encoding: 'JSON'
-// });
-
 // Setup Server
 const port = 8000;
 const server = app.listen(port, listening);
@@ -99,7 +89,7 @@ module.exports = app;
 // Style my travel card
 // Give hoover states to the buttons
 // Make page responsive
-// Prepare tests
+// Prepare tests - check
 // Prepare offline service workers
 // Prepare a custom readme
 // Set up a function to move trips to memory lane
