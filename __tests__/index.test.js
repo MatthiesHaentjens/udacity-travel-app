@@ -1,24 +1,9 @@
 const request = require("supertest");
 const app = require("../src/server/index");
-import 'regenerator-runtime/runtime'
 
-const projectData = [{
-    tripType:'',
-    startingPoint:'',
-    destination:'',
-    destinationPicture:'',
-    departureDate:'',
-    daysToGo:'',
-    endDate:'',
-    minTemp:'',
-    maxTemp:'',
-    id: '' 
-  }]
-
-it('should create a new post', async () => {
-    const res = await request(app)
-      .post('/add')
-      .send(projectData)
-    expect(res.statusCode).toEqual(201)
-    expect(res.body).toHaveProperty('post')
-})
+// example from https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/
+test("It should response the GET method", () => {
+    return request(app)
+      .get("/")
+      .expect(200);
+});
