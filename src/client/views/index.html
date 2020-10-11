@@ -33,10 +33,10 @@
                         </div>
                         <div class="travel-times">
                             <label>From</label>
-                            <input id="departure-date" class="form-control" type="text" name="departure-date" placeholder="mm-dd-yyyy" 
+                            <input id="departure-date" class="form-control" type="date" name="departure-date"
                             required pattern= "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$">
                             <label>To</label>
-                            <input id="end-date" class="form-control" type="text" name="end-date" placeholder="mm-dd-yyyy" 
+                            <input id="end-date" class="form-control" type="date" name="end-date" 
                             required pattern= "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$">
                         </div>
                         <button class="save-trip" id="save-trip">SAVE TRIP</button>
@@ -64,7 +64,7 @@
             </div>
 
         </div>
-        <script>
+        <!-- <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
                 // Use the window load event to keep the page load performant
@@ -72,6 +72,6 @@
                     navigator.serviceWorker.register('/service-worker.js');
                 });
             }
-        </script>
+        </script> -->
     </body>
 </html>
