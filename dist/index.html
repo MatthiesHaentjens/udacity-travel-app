@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Tripplist</title>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Grandstander:ital,wght@0,400;1,300&family=Kufam:wght@900&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -11,8 +10,8 @@
         <div class="container">
             
             <header class="page-header">
-                <img class="logo" src='src/client/images/logo-tripplist.png' alt="logo tripplist">
-                <button class="add-trip-button" id="add-trip-button" onclick="return Client.openAddTripPopup(event)">ADD TRIP</button>
+                <img id="logo">
+                <button class="add-trip-button" id="add-trip-button">ADD TRIP</button>
             </header>
             
             <div id="popup-form">
@@ -40,7 +39,7 @@
                             <input id="end-date" class="form-control" type="text" name="end-date" placeholder="mm-dd-yyyy" 
                             required pattern= "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$">
                         </div>
-                        <button class="save-trip" onclick="return Client.getTripDetails(event)">SAVE TRIP</button>
+                        <button class="save-trip" id="save-trip">SAVE TRIP</button>
                     </form>
                 </div>
             </div>
@@ -55,15 +54,24 @@
                 <div class="cards" id="wish-list"></div>
             </section>
 
-            <section class="trip-down-memory-lane">
-                <h2 class="section-title">A trip down memory lane</h2>
-                <div class="cards" id="trip-down-memory-lane"></div>
-            </section>
-
             <div class="page-footer">
-                <p></p>
+                <div class="footer-text">
+                    <div class="api-text">Special thanks to:</div>
+                    <a class="api-text" href="https://www.geonames.org/">Geonames</a>
+                    <a class="api-text" href="https://www.weatherbit.io/">Weatherbit</a>
+                    <a class="api-text" href="https://pixabay.com/">Pixabay</a>
+                </div>
             </div>
 
         </div>
+        <!-- <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script> -->
     <script type="text/javascript" src="main.js"></script></body>
 </html>

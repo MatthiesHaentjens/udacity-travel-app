@@ -5,16 +5,11 @@ const fetch = require("node-fetch");
 const baseURLGeonames = 'http://api.geonames.org/searchJSON?q=';
 const apiKeyGeoNames = 'matthies';
 
-// Need to figure out how this works
-// const apiKeyGeoNames = process.env.API_KEY_GEONAMES
-
 // Personal API Key for Weatherbit
 const baseURLWeatherbitHistory = 'http://api.weatherbit.io/v2.0/history/daily?';
 const baseURLWeatherbitForecast = 'http://api.weatherbit.io/v2.0/forecast/daily?';
 const apiKeyWeatherbit = '88034f45d76e48dd9032d139b923cb75';
 
-// Need to figure out how this works
-// const apiKeyWeatherbit = process.env.API_KEY_WEATHERBIT
 
 /* Function to GET Geonames API Data*/
 export async function getCoordinates(city) {

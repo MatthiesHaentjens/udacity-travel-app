@@ -86,11 +86,13 @@ module.exports = app;
 // Set error messages
   // Date format
   // Destination
-// Style my travel card
-// Give hoover states to the buttons
-// Make page responsive
+// Load logo - check
+// Style my travel card - check
+// Give hoover states to the buttons - check
+// Make page responsive - check
+// Make footer - check
 // Prepare tests - check
-// Prepare offline service workers
-// Prepare a custom readme
+// Prepare offline service workers - 
+// Prepare a custom readme - check
 // Set up a function to move trips to memory lane
 // Clean up code
